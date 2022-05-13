@@ -1,4 +1,4 @@
-# BrailleSymbolsAPI
+# BrailleSymbols
 
 - .NET REST API that manages a database of ascii braille special symbols as defined by the International Council on English Braille (ICEB) - https://iceb.org/symbsc2.html 
 - Role and identity based authentication implemented with Linkedin OAuth 2.0. 
