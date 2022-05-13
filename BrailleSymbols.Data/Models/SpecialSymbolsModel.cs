@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BrailleSymbols.Data.Models
 {
-    public class SpecialSymbols
+    public class SpecialSymbolsModel
     {
         public int Id { get; set; }
         public string SymbolName { get; set; }
