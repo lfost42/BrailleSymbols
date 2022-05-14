@@ -11,7 +11,14 @@ An administrative dashboard for maintaining a database of braille special sysmbo
 
 ## OPEN REQUIREMENTS
 
-MVP: A dashboard that authenticated users can search, create, update, and delete records from the Special Symbols database administered by the BrailleSymbolsAPI. FosterPi API provides authentication using Linkedin OAuth 2.0. 
+MVP 
+- A dashboard that allows authenticated users can search, create, update, and delete records from the Special Symbols database through the BrailleSymbolsAPI. 
+- FosterPi API provides authentication using Linkedin OAuth 2.0. 
+
+PLANNED UPDATES
+- Create a service that scrapes symbols from the iceb database
+- Create a service that adds uniqe symbols to the database
+- Create a service that sorts symbols into ascii-braille order
 
 ## USER INTERFACE
 A dashboard that allowed CRUD operations on records in teh Braille Special Symbols database. 

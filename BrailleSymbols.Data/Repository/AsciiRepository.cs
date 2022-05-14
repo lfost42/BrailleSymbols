@@ -18,7 +18,7 @@ namespace BrailleSymbols.Data.Repository
 
         public bool AsciiExists(string symbol)
         {
-            bool value = _db.Asciis.Any(a => a.Symbol.ToLower().Trim() == symbol.ToLower().Trim());
+            bool value = _db.Asciis.Any(a => a.AsciiSymbol.ToLower().Trim() == symbol.ToLower().Trim());
             return value;
         }
 
@@ -47,7 +47,7 @@ namespace BrailleSymbols.Data.Repository
 
         public ICollection<AsciiModel> GetAsciis()
         {
-            return _db.Asciis.OrderBy(a => a.Symbol).ToList();
+            return _db.Asciis.OrderBy(a => a.AsciiSymbol).ToList();
         }
 
         public bool Save()

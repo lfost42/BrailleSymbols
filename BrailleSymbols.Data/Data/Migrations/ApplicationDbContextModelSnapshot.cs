@@ -3,17 +3,15 @@ using System;
 using BrailleSymbols.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BrailleSymbols.Data.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220514023952_Setup_001")]
-    partial class Setup_001
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,17 +26,12 @@ namespace BrailleSymbols.Data.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("SpecialSymbolsModelId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Symbol")
+                    b.Property<string>("AsciiSymbol")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SpecialSymbolsModelId");
 
                     b.ToTable("Asciis");
                 });
@@ -50,6 +43,9 @@ namespace BrailleSymbols.Data.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int>("AsciiModelId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("NotRequired")
                         .HasColumnType("boolean");
 
@@ -59,6 +55,8 @@ namespace BrailleSymbols.Data.Data.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AsciiModelId");
 
                     b.ToTable("SpecialSymbols");
                 });
@@ -261,11 +259,15 @@ namespace BrailleSymbols.Data.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("BrailleSymbols.Data.Models.AsciiModel", b =>
+            modelBuilder.Entity("BrailleSymbols.Data.Models.SpecialSymbolsModel", b =>
                 {
-                    b.HasOne("BrailleSymbols.Data.Models.SpecialSymbolsModel", null)
-                        .WithMany("AsciiModels")
-                        .HasForeignKey("SpecialSymbolsModelId");
+                    b.HasOne("BrailleSymbols.Data.Models.AsciiModel", "AsciiModel")
+                        .WithMany("SpecialSymbolsModel")
+                        .HasForeignKey("AsciiModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AsciiModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -319,9 +321,9 @@ namespace BrailleSymbols.Data.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BrailleSymbols.Data.Models.SpecialSymbolsModel", b =>
+            modelBuilder.Entity("BrailleSymbols.Data.Models.AsciiModel", b =>
                 {
-                    b.Navigation("AsciiModels");
+                    b.Navigation("SpecialSymbolsModel");
                 });
 #pragma warning restore 612, 618
         }
