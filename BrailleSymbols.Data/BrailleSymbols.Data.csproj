@@ -19,9 +19,7 @@
     <None Remove="Repository\IRepository\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
     <Folder Include="Models\" />
-    <Folder Include="Data\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\IRepository\" />
   </ItemGroup>
