@@ -1,13 +1,27 @@
 # BrailleSymbols
 
-- .NET REST API that manages a database of ascii braille special symbols as defined by the International Council on English Braille (ICEB) - https://iceb.org/symbsc2.html 
-- Role and identity based authentication implemented with Linkedin OAuth 2.0. 
-- Designed, tested, and deployed following Open API Specification standards using Swagger. 
+The special list of symbols are defined by committee and published in html format - https://iceb.org/symbsc2.html. This web app consumes an API that makes the information accessible, searchable, and maintainable. It also allows the community to be involved in keeping the information updated and accurate. 
+
+This will be part of a tool that will help transcribers format the Special Symbols Page in Braille transcriptions. It's also a piece of a braille training ecosystem I am designing. 
 
 ![My App](./app.png)
 
-## PROBLEM IT SOLVES
+## WALKTHROUGH
+An administrative dashboard for maintaining a database of braille special sysmbols. Designed, tested, and deployed following Open API Specification standards using Swagger. 
 
-The special list of symbols are defined by committee and published in html here - https://iceb.org/symbsc2.html; there is no way to search or query the list, yet alone use it for other purposes. This API makes the list accessible and allows developers to use it in braille software. It also opens the opportunity for the community to be involved in keeping the list updated and accurate. 
+## OPEN REQUIREMENTS
 
-I plan to consume this as part of a tool that will help transcribers format the Special Symbols Page in Braille transcriptions. It's also a piece of a braille training ecosystem I am designing and hope to build some day. 
+MVP: A dashboard that authenticated users can search, create, update, and delete records from the Special Symbols database administered by the BrailleSymbolsAPI. FosterPi API provides authentication using Linkedin OAuth 2.0. 
+
+## USER INTERFACE
+A dashboard that allowed CRUD operations on records in teh Braille Special Symbols database. 
+
+## LOGIC DESIGN
+BrailleSymbolsAPI provides access to the database.
+FosterPi API provides authentication so that only authorized users can access and modify the database.
+
+## DATA DESIGN
+AsciiModel - ascii characters that make up a symbols, one-to-many relationship with SpecialSymbols
+SpecialSymbolsModel - name of symbol and matching ascii
+
+
