@@ -7,7 +7,7 @@ This will be part of a tool that will help transcribers format the Special Symbo
 ![My App](./app.png)
 
 ## WALKTHROUGH
-An administrative dashboard for maintaining a database of braille special sysmbols. Designed, tested, and deployed following Open API Specification standards using Swagger. 
+An administrative dashboard for maintaining a database of braille special symbols. Designed, tested, and deployed following Open API Specification standards using Swagger. 
 
 ## OPEN REQUIREMENTS
 
@@ -16,16 +16,16 @@ MVP
 - FosterPi API provides authentication using Linkedin OAuth 2.0. 
 
 PLANNED UPDATES
-- Create a service that scrapes symbols from the iceb database
-- Create a service that adds uniqe symbols to the database
+- Create a service that scrapes symbols from the ICEB database
+- Create a service that adds unique symbols to the database
 - Create a service that sorts symbols into ascii-braille order
 
 ## USER INTERFACE
-A dashboard that allowed CRUD operations on records in teh Braille Special Symbols database. 
+A dashboard that enables CRUD operations on records in the Braille Special Symbols database. 
 
 ## LOGIC DESIGN
 BrailleSymbolsAPI provides access to the database.
-FosterPi API provides authentication so that only authorized users can access and modify the database.
+FosterPi API provides authentication to limit who can access and modify the database.
 
 ## DATA DESIGN
 AsciiModel - ascii characters that make up a symbols, one-to-many relationship with SpecialSymbols
