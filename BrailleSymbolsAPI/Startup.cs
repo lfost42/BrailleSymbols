@@ -18,6 +18,8 @@ using Microsoft.EntityFrameworkCore;
 using BrailleSymbols.Data.Repository.IRepository;
 using BrailleSymbols.Data.Repository;
 using BrailleSymbols.Data.Mapper;
+using Microsoft.Extensions.Options;
+using Swashbuckle;
 
 namespace BrailleSymbolsAPI
 {
@@ -36,12 +38,11 @@ namespace BrailleSymbolsAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
-            services.AddScoped<IAsciiRepository, AsciiRepository>();
             services.AddScoped<ISpecialSymbolsRepository, SpecialSymbolsRepository>();
             services.AddAutoMapper(typeof(BrailleMappings));
-            services.AddSwaggerGen(option =>
+            services.AddSwaggerGen(options =>
             {
-                OptionsBuilderConfigurationExtensions.SwaggerDoc("BrailleSymbolsOpenAPISpec",
+                options.SwaggerDoc("SpecialSymbolsOpenAPISpec",
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
                         Title = "SpecialSymbols API",

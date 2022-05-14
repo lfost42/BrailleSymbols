@@ -12,7 +12,6 @@ namespace BrailleSymbolsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class SpecialSymbolsController : Controller
     {
         private ISpecialSymbolsRepository _ssr;

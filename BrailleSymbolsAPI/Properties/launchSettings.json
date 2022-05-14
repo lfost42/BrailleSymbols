@@ -12,7 +12,8 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "
+        forecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +21,7 @@
     "BrailleSymbolsAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "specialsymbols",
       "applicationUrl": "https://localhost:45734;http://localhost:11640",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

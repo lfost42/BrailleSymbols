@@ -9,7 +9,6 @@ namespace BrailleSymbols.Data.Mapper
     {
         public BrailleMappings()
         {
-            CreateMap<AsciiModel, AsciiModelDto>().ReverseMap();
             CreateMap<SpecialSymbolsModel, SpecialSymbolsModelDto>().ReverseMap();
         }
     }

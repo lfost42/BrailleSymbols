@@ -9,19 +9,6 @@ namespace BrailleSymbols.Data.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Asciis",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AsciiSymbol = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Asciis", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -66,19 +53,15 @@ namespace BrailleSymbols.Data.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Ascii = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     SymbolName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    NotRequired = table.Column<bool>(type: "boolean", nullable: false),
-                    AsciiModelId = table.Column<int>(type: "integer", nullable: false)
+                    SSPRequired = table.Column<bool>(type: "boolean", nullable: false),
+                    Added = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Updated = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SpecialSymbols", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SpecialSymbols_Asciis_AsciiModelId",
-                        column: x => x.AsciiModelId,
-                        principalTable: "Asciis",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,8 +110,8 @@ namespace BrailleSymbols.Data.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    ProviderKey = table.Column<string>(type: "text", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
                     UserId = table.Column<string>(type: "text", nullable: false)
                 },
@@ -172,8 +155,8 @@ namespace BrailleSymbols.Data.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
-                    LoginProvider = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Value = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -223,11 +206,6 @@ namespace BrailleSymbols.Data.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SpecialSymbols_AsciiModelId",
-                table: "SpecialSymbols",
-                column: "AsciiModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -255,9 +233,6 @@ namespace BrailleSymbols.Data.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Asciis");
         }
     }
 }

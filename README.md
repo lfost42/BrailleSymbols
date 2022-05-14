@@ -28,7 +28,6 @@ BrailleSymbolsAPI provides access to the database.
 FosterPi API provides authentication to limit who can access and modify the database.
 
 ## DATA DESIGN
-AsciiModel - ascii characters that make up a symbols, one-to-many relationship with SpecialSymbols
-SpecialSymbolsModel - name of symbol and matching ascii
+SpecialSymbolsModel - ascii, name, added, updated
 
 
