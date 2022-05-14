@@ -13,6 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using BrailleSymbols.Data.Data;
+using Microsoft.EntityFrameworkCore;
+using BrailleSymbols.Data.Repository.IRepository;
+using BrailleSymbols.Data.Repository;
+using BrailleSymbols.Data.Mapper;
 
 namespace BrailleSymbolsAPI
 {
@@ -28,8 +33,15 @@ namespace BrailleSymbolsAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(
+                    ConnectionService.GetConnectionString(Configuration)));
+            services.AddScoped<IAsciiRepository, AsciiRepository>();
+            services.AddScoped<ISpecialSymbolsRepository, SpecialSymbolsRepository>();
+            services.AddAutoMapper(typeof(BrailleMappings));
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
 
             services.AddControllers();
         }
@@ -46,8 +58,8 @@ namespace BrailleSymbolsAPI
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
