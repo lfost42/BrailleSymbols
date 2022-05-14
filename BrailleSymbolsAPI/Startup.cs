@@ -38,6 +38,7 @@ namespace BrailleSymbolsAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
+
             services.AddScoped<ISpecialSymbolsRepository, SpecialSymbolsRepository>();
             services.AddAutoMapper(typeof(BrailleMappings));
             services.AddSwaggerGen(options =>

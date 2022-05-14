@@ -39,7 +39,7 @@ namespace BrailleSymbolsAPI.Controllers
             var ssmDto = new List<SpecialSymbolsModelDto>();
             foreach (var symb in specialSymbolsList)
             {
-
+                ssmDto.Add(_map.Map<SpecialSymbolsModelDto>(symb));
             }
 
             return Ok(ssmDto);
