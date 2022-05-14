@@ -39,6 +39,15 @@ namespace BrailleSymbolsAPI
             services.AddScoped<IAsciiRepository, AsciiRepository>();
             services.AddScoped<ISpecialSymbolsRepository, SpecialSymbolsRepository>();
             services.AddAutoMapper(typeof(BrailleMappings));
+            services.AddSwaggerGen(option =>
+            {
+                OptionsBuilderConfigurationExtensions.SwaggerDoc("BrailleSymbolsOpenAPISpec",
+                    new Microsoft.OpenApi.Models.OpenApiInfo()
+                    {
+                        Title = "SpecialSymbols API",
+                        Version = "1"
+                    });
+            });
 
             //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
@@ -55,6 +64,7 @@ namespace BrailleSymbolsAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
 
             app.UseRouting();
 
