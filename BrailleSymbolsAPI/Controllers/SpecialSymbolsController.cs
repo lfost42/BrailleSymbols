@@ -27,13 +27,6 @@ namespace BrailleSymbolsAPI.Controllers
             _map = map;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-
         /// <summary>
         /// Get all symbols.
         /// </summary>
