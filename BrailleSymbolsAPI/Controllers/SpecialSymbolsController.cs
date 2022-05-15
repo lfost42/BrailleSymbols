@@ -7,7 +7,6 @@ using BrailleSymbols.Data.Models;
 using BrailleSymbols.Data.Models.Dtos;
 using BrailleSymbols.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.Swagger.Annotations;
 
 namespace BrailleSymbolsAPI.Controllers
 {
@@ -15,7 +14,7 @@ namespace BrailleSymbolsAPI.Controllers
     [ApiController]
     public class SpecialSymbolsController : Controller
     {
-        private ISpecialSymbolsRepository _ssr;
+        private readonly ISpecialSymbolsRepository _ssr;
         private readonly IMapper _map;
 
         public SpecialSymbolsController(
@@ -34,7 +33,7 @@ namespace BrailleSymbolsAPI.Controllers
 
 
         /// <summary>
-        /// Get list of symbols.
+        /// Get all symbols.
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "GetAllSymbols")]
@@ -56,7 +55,7 @@ namespace BrailleSymbolsAPI.Controllers
         /// <summary>
         /// View symbol. 
         /// </summary>
-        /// <param name="id">Id of the braille symbol</param>
+        /// <param name="id">Id of the special symbol</param>
         /// <returns></returns>
         [HttpGet("id:int", Name = "GetSpecialSymbolsModel")]
         public IActionResult GetSpecialSymbolsModel(int id)
@@ -121,7 +120,8 @@ namespace BrailleSymbolsAPI.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "UpdateSpecialSymbolsModel")]
-        public IActionResult DleteSpecialSymbolsModel(int id)
+        public IActionResult DeleteSpecialSymbolsModel(int id)
+
         {
             if (!_ssr.SpecialSymbolsModelExists(id))
             {

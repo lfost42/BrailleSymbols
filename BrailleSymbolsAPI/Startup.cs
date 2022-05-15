@@ -20,6 +20,8 @@ using BrailleSymbols.Data.Repository;
 using BrailleSymbols.Data.Mapper;
 using Microsoft.Extensions.Options;
 using Swashbuckle;
+using System.Reflection;
+using System.IO;
 
 namespace BrailleSymbolsAPI
 {
@@ -43,13 +45,17 @@ namespace BrailleSymbolsAPI
             services.AddAutoMapper(typeof(BrailleMappings));
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("SpecialSymbolsOpenAPISpec",
+                options.SwaggerDoc("BrailleSymbolsOpenAPISpec",
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Title = "SpecialSymbols API",
+                        Title = "BrailleSymbols API",
                         Version = "1"
                     });
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                options.IncludeXmlComments(cmlCommentsFullPath);
             });
+            
             services.AddSwaggerGen(c => {
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 c.IgnoreObsoleteActions();
@@ -75,7 +81,7 @@ namespace BrailleSymbolsAPI
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/SpecialSymbolsOpenAPISpec/swagger.json", "SpecialSymbols API");
+                options.SwaggerEndpoint("/swagger/BrailleSymbolsOpenAPISpec/swagger.json", "BrailleSymbols API");
                 options.RoutePrefix = "";
             });
 
