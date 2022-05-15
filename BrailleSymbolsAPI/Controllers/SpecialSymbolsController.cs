@@ -32,7 +32,12 @@ namespace BrailleSymbolsAPI.Controllers
             return View();
         }
 
-        [HttpGet(Name = "GetSpecialSymbolsModels")]
+
+        /// <summary>
+        /// Get list of symbols.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet(Name = "GetAllSymbols")]
         //[SwaggerOperation("GetSymbols")]
         public IActionResult GetSpecialSymbolsModels()
         {
@@ -48,7 +53,11 @@ namespace BrailleSymbolsAPI.Controllers
             return Ok(ssmDto);
         }
 
-        //[SwaggerOperation("GetSymbol")]
+        /// <summary>
+        /// View symbol. 
+        /// </summary>
+        /// <param name="id">Id of the braille symbol</param>
+        /// <returns></returns>
         [HttpGet("id:int", Name = "GetSpecialSymbolsModel")]
         public IActionResult GetSpecialSymbolsModel(int id)
         {

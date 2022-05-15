@@ -76,6 +76,7 @@ namespace BrailleSymbolsAPI
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/SpecialSymbolsOpenAPISpec/swagger.json", "SpecialSymbols API");
+                options.RoutePrefix = "";
             });
 
             app.UseRouting();
