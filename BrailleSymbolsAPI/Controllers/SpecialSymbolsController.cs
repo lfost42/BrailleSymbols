@@ -7,6 +7,7 @@ using BrailleSymbols.Data.Models;
 using BrailleSymbols.Data.Models.Dtos;
 using BrailleSymbols.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.Swagger.Annotations;
 
 namespace BrailleSymbolsAPI.Controllers
 {
@@ -25,12 +26,14 @@ namespace BrailleSymbolsAPI.Controllers
             _map = map;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetSpecialSymbolsModels")]
+        //[SwaggerOperation("GetSymbols")]
         public IActionResult GetSpecialSymbolsModels()
         {
             var specialSymbolsList = _ssr.GetSpecialSymbolModels();
@@ -45,6 +48,7 @@ namespace BrailleSymbolsAPI.Controllers
             return Ok(ssmDto);
         }
 
+        //[SwaggerOperation("GetSymbol")]
         [HttpGet("id:int", Name = "GetSpecialSymbolsModel")]
         public IActionResult GetSpecialSymbolsModel(int id)
         {

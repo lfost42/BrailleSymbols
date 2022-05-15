@@ -50,6 +50,12 @@ namespace BrailleSymbolsAPI
                         Version = "1"
                     });
             });
+            services.AddSwaggerGen(c => {
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                c.IgnoreObsoleteActions();
+                c.IgnoreObsoleteProperties();
+                c.CustomSchemaIds(type => type.FullName);
+            });
 
             //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
@@ -67,6 +73,10 @@ namespace BrailleSymbolsAPI
 
             app.UseHttpsRedirection();
             app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/SpecialSymbolsOpenAPISpec/swaggger.json", "SpecialSymbols API");
+            });
 
             app.UseRouting();
 
