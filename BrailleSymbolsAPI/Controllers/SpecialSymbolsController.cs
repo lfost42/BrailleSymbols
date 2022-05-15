@@ -6,12 +6,14 @@ using AutoMapper;
 using BrailleSymbols.Data.Models;
 using BrailleSymbols.Data.Models.Dtos;
 using BrailleSymbols.Data.Repository.IRepository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrailleSymbolsAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class SpecialSymbolsController : Controller
     {
         private readonly ISpecialSymbolsRepository _ssr;
@@ -37,7 +39,8 @@ namespace BrailleSymbolsAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "GetAllSymbols")]
-        //[SwaggerOperation("GetSymbols")]
+        [ProducesResponseType(200, Type = typeof(List<SpecialSymbolsModelDto>))]
+        [ProducesResponseType(400)]
         public IActionResult GetSpecialSymbolsModels()
         {
             var specialSymbolsList = _ssr.GetSpecialSymbolModels();
@@ -57,7 +60,10 @@ namespace BrailleSymbolsAPI.Controllers
         /// </summary>
         /// <param name="id">Id of the special symbol</param>
         /// <returns></returns>
-        [HttpGet("id:int", Name = "GetSpecialSymbolsModel")]
+        [HttpGet("id:int", Name = "GetSpecialSymbols")]
+        [ProducesResponseType(200, Type = typeof(SpecialSymbolsModelDto))]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]
         public IActionResult GetSpecialSymbolsModel(int id)
         {
             var ssm = _ssr.GetSpecialSymbolsModel(id);
@@ -70,6 +76,10 @@ namespace BrailleSymbolsAPI.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(201, Type = typeof(SpecialSymbolsModelDto))]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult CreateSpecialSymbolsModel([FromBody] SpecialSymbolsModelDto specialSymbolsModelDto)
         {
             if (specialSymbolsModelDto == null)
@@ -100,6 +110,10 @@ namespace BrailleSymbolsAPI.Controllers
         }
 
         [HttpPatch("{id:int}", Name = "UpdateSpecialSymbolsModel")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateSpecialSymbolsModel(int id, [FromBody] SpecialSymbolsModelDto specialSymbolsModelDto)
         {
             if (specialSymbolsModelDto == null || id != specialSymbolsModelDto.Id)
@@ -120,6 +134,10 @@ namespace BrailleSymbolsAPI.Controllers
         }
 
         [HttpDelete("{id:int}", Name = "UpdateSpecialSymbolsModel")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult DeleteSpecialSymbolsModel(int id)
 
         {
