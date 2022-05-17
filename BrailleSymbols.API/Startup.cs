@@ -24,6 +24,7 @@ using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace BrailleSymbolsAPI
 {
@@ -51,37 +52,15 @@ namespace BrailleSymbolsAPI
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ReportApiVersions = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                new HeaderApiVersionReader("X-version"),
+                new QueryStringApiVersionReader("api-version"),
+                new UrlSegmentApiVersionReader(),
+                new MediaTypeApiVersionReader("ver"));
             });
-            services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VV");
+            services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
-
-            //SwaggerGen options without versioning
-            //services.AddSwaggerGen(options =>
-            //{
-            //    options.SwaggerDoc("BrailleSymbolsOpenAPISpec",
-            //        new Microsoft.OpenApi.Models.OpenApiInfo()
-            //        {
-            //            Title = "BrailleSymbols API",
-            //            Version = "1",
-            //            Description = "A database of Ascii-Braille Special Symbols as published by the ICEB Committee",
-            //            Contact = new Microsoft.OpenApi.Models.OpenApiContact()
-            //            {
-            //                Email = "lyndabrf@gmail.com",
-            //                Name = "Lynda Foster",
-            //                Url = new Uri("https://www.linkedin.com/in/lynda-foster/")
-            //            },
-            //            License = new Microsoft.OpenApi.Models.OpenApiLicense()
-            //            {
-            //                Name = "MIT License",
-            //                Url = new Uri("https://en.wikipedia.org/wiki/MIT_License")
-            //            }
-            //        });
-            //    var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            //    var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
-            //    options.IncludeXmlComments(cmlCommentsFullPath);
-            //});
-            
             services.AddSwaggerGen(c => {
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 c.IgnoreObsoleteActions();
@@ -117,9 +96,8 @@ namespace BrailleSymbolsAPI
                         desc.GroupName.ToUpperInvariant());
                     options.RoutePrefix = "";
                 }
+                app.UseRouting();
             });
-
-            app.UseRouting();
 
             //app.UseAuthentication();
             //app.UseAuthorization();

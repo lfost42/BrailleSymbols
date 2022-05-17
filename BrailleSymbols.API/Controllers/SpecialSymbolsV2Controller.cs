@@ -14,7 +14,6 @@ namespace BrailleSymbolsAPI.Controllers
     [Route("api/v{version:apiVersion}/SpecialSymbols")]
     [ApiVersion("2.0")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = "BrailleSymbolsOpenAPISpec")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class SpecialSymbolsV2Controller : Controller
     {
@@ -30,10 +29,10 @@ namespace BrailleSymbolsAPI.Controllers
         }
 
         /// <summary>
-        /// Get all symbols.
+        /// View first symbol (versioning DEMO). 
         /// </summary>
         /// <returns></returns>
-        [HttpGet(Name = "GetAllSymbols")]
+        [HttpGet(Name = "GetFirstSymbolDemo")]
         [ProducesResponseType(200, Type = typeof(List<SpecialSymbolsModelDto>))]
         [ProducesResponseType(400)]
         public IActionResult GetSpecialSymbolsModels()

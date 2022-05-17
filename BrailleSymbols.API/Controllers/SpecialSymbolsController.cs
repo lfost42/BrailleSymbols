@@ -77,14 +77,14 @@ namespace BrailleSymbolsAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateSpecialSymbolsModel([FromBody] SpecialSymbolsModelDto specialSymbolsModelDto)
+        public IActionResult CreateSpecialSymbolsModel([FromBody] SpecialSymbolsModelDto ssmDto)
         {
-            if (specialSymbolsModelDto == null)
+            if (ssmDto == null)
             {
                 return BadRequest(ModelState);
             }
 
-            if (_ssr.SpecialSymbolsModelExists(specialSymbolsModelDto.SymbolName))
+            if (_ssr.SpecialSymbolsModelExists(ssmDto.SymbolName))
             {
                 ModelState.AddModelError("", "specialSymbolsModel already in system");
                 return StatusCode(404, ModelState);
@@ -95,7 +95,7 @@ namespace BrailleSymbolsAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var ssmObj = _map.Map<SpecialSymbolsModel>(specialSymbolsModelDto);
+            var ssmObj = _map.Map<SpecialSymbolsModel>(ssmDto);
 
             if (!_ssr.CreateSpecialSymbolsModel(ssmObj))
             {
@@ -103,28 +103,30 @@ namespace BrailleSymbolsAPI.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return CreatedAtRoute("GetSpecialSymbolsModel",
+            return CreatedAtRoute("CreateSpecialSymbol",
                 new { version = HttpContext.GetRequestedApiVersion().ToString(),
                     id = ssmObj.Id }, ssmObj);
         }
 
         /// <summary>
-        /// Update Special Symbl
+        /// Update braille symbol. 
         /// </summary>
+        /// <param name="id">Id of the braille symbol</param>
+        /// <param name="ssmDto">Dto for the braille symbol</param>
         /// <returns></returns>
         [HttpPatch("{id:int}", Name = "UpdateSpecialSymbol")]
         [ProducesResponseType(204)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateSpecialSymbolsModel(int id, [FromBody] SpecialSymbolsModelDto specialSymbolsModelDto)
+        public IActionResult UpdateSpecialSymbolsModel(int id, [FromBody] SpecialSymbolsModelDto ssmDto)
         {
-            if (specialSymbolsModelDto == null || id != specialSymbolsModelDto.Id)
+            if (ssmDto == null || id != ssmDto.Id)
             {
                 return BadRequest(ModelState);
             }
 
-            var ssmObj = _map.Map<SpecialSymbolsModel>(specialSymbolsModelDto);
+            var ssmObj = _map.Map<SpecialSymbolsModel>(ssmDto);
 
             if (!_ssr.UpdateSpecialSymbolsModel(ssmObj))
             {
@@ -136,6 +138,11 @@ namespace BrailleSymbolsAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Delete symbol. 
+        /// </summary>
+        /// <param name="id">Id of the braille symbol</param>
+        /// <returns></returns>
         [HttpDelete("{id:int}", Name = "DelteSpecialSymbol")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

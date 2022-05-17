@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BrailleSymbols.API</name>
+    </assembly>
+    <members>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsController.GetSpecialSymbolsModels">
+            <summary>
+            Get all symbols.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsController.GetSpecialSymbolsModel(System.Int32)">
+            <summary>
+            View symbol. 
+            </summary>
+            <param name="id">Id of the special symbol</param>
+            <returns></returns>
+        </member>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsController.CreateSpecialSymbolsModel(BrailleSymbols.Data.Models.Dtos.SpecialSymbolsModelDto)">
+            <summary>
+            Ceate new special symbol.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsController.UpdateSpecialSymbolsModel(System.Int32,BrailleSymbols.Data.Models.Dtos.SpecialSymbolsModelDto)">
+            <summary>
+            Update braille symbol. 
+            </summary>
+            <param name="id">Id of the braille symbol</param>
+            <param name="ssmDto">Dto for the braille symbol</param>
+            <returns></returns>
+        </member>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsController.DeleteSpecialSymbolsModel(System.Int32)">
+            <summary>
+            Delete symbol. 
+            </summary>
+            <param name="id">Id of the braille symbol</param>
+            <returns></returns>
+        </member>
+        <member name="M:BrailleSymbolsAPI.Controllers.SpecialSymbolsV2Controller.GetSpecialSymbolsModels">
+            <summary>
+            View first symbol (versioning DEMO). 
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
