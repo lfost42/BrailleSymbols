@@ -14,7 +14,7 @@
             <summary>
             View symbol. 
             </summary>
-            <param name="id">Id of the special symbol</param>
+            <param name="id">Id of the braille special symbol</param>
             <returns></returns>
         </member>
     </members>

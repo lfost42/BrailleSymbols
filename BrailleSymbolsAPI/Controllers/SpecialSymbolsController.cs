@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BrailleSymbolsAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/SpecialSymbols")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class SpecialSymbolsController : Controller
@@ -68,7 +68,11 @@ namespace BrailleSymbolsAPI.Controllers
             return Ok(ssmDto);
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Ceate new special symbol.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost(Name = "CreateSpecialSymbol")]
         [ProducesResponseType(201, Type = typeof(SpecialSymbolsModelDto))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -99,10 +103,16 @@ namespace BrailleSymbolsAPI.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return CreatedAtRoute("GetSpecialSymbolsModel", new { id = ssmObj.Id }, ssmObj);
+            return CreatedAtRoute("GetSpecialSymbolsModel",
+                new { version = HttpContext.GetRequestedApiVersion().ToString(),
+                    id = ssmObj.Id }, ssmObj);
         }
 
-        [HttpPatch("{id:int}", Name = "UpdateSpecialSymbolsModel")]
+        /// <summary>
+        /// Update Special Symbl
+        /// </summary>
+        /// <returns></returns>
+        [HttpPatch("{id:int}", Name = "UpdateSpecialSymbol")]
         [ProducesResponseType(204)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -126,7 +136,7 @@ namespace BrailleSymbolsAPI.Controllers
 
         }
 
-        [HttpDelete("{id:int}", Name = "UpdateSpecialSymbolsModel")]
+        [HttpDelete("{id:int}", Name = "DelteSpecialSymbol")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
