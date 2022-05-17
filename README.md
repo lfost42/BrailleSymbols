@@ -12,15 +12,13 @@ An administrative dashboard for maintaining a database of braille special symbol
 ## OPEN REQUIREMENTS
 
 MVP 
-- Consumed by a web app that allows authenticated users can search, create, update, and delete records from the Special Symbols database through the BrailleSymbolsAPI. 
-- Unauthenticated users can search the database to locate symbols. 
+- Consumed by a web app that allows authenticated admins can search, create, update, and delete records from the Special Symbols database through the BrailleSymbolsAPI. 
+- All users can search the database to locate symbols. 
 - FosterPi API provides authentication using Linkedin OAuth 2.0. 
 
 PLANNED UPDATES
 - Create a service that scrapes symbols from the ICEB database
-- Create a service that adds unique symbols to the database
-- Create a service that sorts symbols into ascii-braille order
-- Provide an option to export sorted symbols as a csv file.
+- Create a service that adds unique symbols from the web scrape to the database
 
 ## LOGIC DESIGN
 BrailleSymbolsAPI provides access to the database.
