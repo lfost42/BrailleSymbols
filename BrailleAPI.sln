@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.21
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A82269EB-5C76-4A0C-AA85-406B7FF188CB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Braille.Data", "Braille.Data\Braille.Data.csproj", "{1877D807-7631-462B-840A-129C8453B667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Braille.API", "Braille.API\Braille.API.csproj", "{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1877D807-7631-462B-840A-129C8453B667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1877D807-7631-462B-840A-129C8453B667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1877D807-7631-462B-840A-129C8453B667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1877D807-7631-462B-840A-129C8453B667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EF702EB-FE53-4961-BDC3-1C364339CBF9}
+	EndGlobalSection
+EndGlobal

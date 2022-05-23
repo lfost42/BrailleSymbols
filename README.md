@@ -1,4 +1,4 @@
-# BrailleSymbols
+# BrailleAPI
 
 The list of braille 'special symbols' is defined by committee and published in html format - https://iceb.org/symbsc2.html. This project consists of an API that makes the information accessible, searchable, and maintainable. 
 
@@ -12,13 +12,19 @@ An administrative dashboard for maintaining a database of braille special symbol
 ## OPEN REQUIREMENTS
 
 MVP 
-- Consumed by a web app that allows authenticated admins can search, create, update, and delete records from the Special Symbols database through the BrailleSymbolsAPI. 
-- All users can search the database to locate symbols. 
-- FosterPi API provides authentication using Linkedin OAuth 2.0. 
+- Can search, create, update, and delete records from the Special Symbols database. 
+- Swagger documentation
+
+COMPLETED UPDATES
+- 
 
 PLANNED UPDATES
+- FosterPi API provides authentication using Linkedin OAuth 2.0. 
+
+Database
 - Create a service that scrapes symbols from the ICEB database
-- Create a service that adds unique symbols from the web scrape to the database
+- Load database with ICEB symbols
+- Create a service that runs the web scraper and only add unique symbols to the database
 
 ## LOGIC DESIGN
 BrailleSymbolsAPI provides access to the database.
