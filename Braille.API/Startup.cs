@@ -6,28 +6,26 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Braille.Data.Data;
-using Microsoft.EntityFrameworkCore;
-using Braille.Data.Repository.IRepository;
 using Braille.Data.Repository;
+using Braille.Data.Repository.IRepository;
+using AutoMapper;
 using Braille.Data.Mapper;
-using Microsoft.Extensions.Options;
-using Swashbuckle;
 using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Braille.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Braille.Data;
 
 namespace Braille
 {
@@ -47,6 +45,7 @@ namespace Braille
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
 
+            services.AddScoped<SeedService>();
             services.AddScoped<IAsciiCharacterRepository, AsciiCharacterRepository>();
             services.AddScoped<IBrailleSymbolRepository, BrailleSymbolRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -60,6 +59,7 @@ namespace Braille
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
+
             var appSettingsSection = Configuration.GetSection("AppSettings");
 
             services.Configure<AppSettings>(appSettingsSection);
