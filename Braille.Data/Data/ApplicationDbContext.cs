@@ -13,6 +13,8 @@ namespace Braille.Data.Data
             : base(options)
         {
         }
-        public DbSet<SpecialSymbolsModel> SpecialSymbols { get; set; }
+        public DbSet<AsciiCharacter> AsciiCharacters { get; set; }
+        public DbSet<BrailleSymbol> BrailleSymbols { get; set; }
+        public DbSet<UserModel> AppUsers { get; set; }
     }
 }

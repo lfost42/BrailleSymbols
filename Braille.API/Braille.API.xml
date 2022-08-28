@@ -4,43 +4,70 @@
         <name>Braille.API</name>
     </assembly>
     <members>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsController.GetSpecialSymbolsModels">
+        <member name="M:Braille.Controllers.AsciiCharactersController.GetAsciiCharacters">
             <summary>
-            Get all symbols.
+            Get all ascii character symbols
             </summary>
             <returns></returns>
         </member>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsController.GetSpecialSymbolsModel(System.Int32)">
+        <member name="M:Braille.Controllers.AsciiCharactersController.GetAsciiCharacter(System.Int32)">
             <summary>
-            View symbol. 
+            Get individual ascii character symbol
             </summary>
-            <param name="id">Id of the special symbol</param>
+            <param name="AsciiCharacterId"> The Id of the ascii character </param>
             <returns></returns>
         </member>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsController.CreateSpecialSymbolsModel(Braille.Data.Models.Dtos.SpecialSymbolsModelDto)">
+        <member name="M:Braille.Controllers.AsciiCharactersController.CreateAsciiCharacter(Braille.Data.Models.Dtos.AsciiCharacterDto)">
             <summary>
-            Ceate new special symbol.
+            Create new ascii character symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.AsciiCharactersController.UpdateAsciiCharacter(System.Int32,Braille.Data.Models.Dtos.AsciiCharacterDto)">
+            <summary>
+            Update ascii character symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.AsciiCharactersController.DeleteAsciiCharacter(System.Int32)">
+            <summary>
+            Delete ascii character symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.BrailleSymbolsController.GetBrailleSymbols">
+            <summary>
+            Get all BrailleSymbols.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsController.UpdateSpecialSymbolsModel(System.Int32,Braille.Data.Models.Dtos.SpecialSymbolsModelDto)">
+        <member name="M:Braille.Controllers.BrailleSymbolsController.GetBrailleSymbol(System.Int32)">
             <summary>
-            Update braille symbol. 
+            Get individual BrailleSymbol.
             </summary>
-            <param name="id">Id of the braille symbol</param>
-            <param name="ssmDto">Dto for the braille symbol</param>
+            <param name="BrailleSymbolId"> The id of the BrailleSymbol </param>
             <returns></returns>
         </member>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsController.DeleteSpecialSymbolsModel(System.Int32)">
+        <member name="M:Braille.Controllers.BrailleSymbolsController.GetBrailleSymbolInAsciiCharacter(System.Int32)">
             <summary>
-            Delete symbol. 
+            Find BrailleSymbol by AsciiCharactersId
             </summary>
-            <param name="id">Id of the braille symbol</param>
-            <returns></returns>
         </member>
-        <member name="M:BrailleAPI.Controllers.SpecialSymbolsV2Controller.GetSpecialSymbolsModels">
+        <member name="M:Braille.Controllers.BrailleSymbolsController.CreateBrailleSymbol(Braille.Data.Models.Dtos.BrailleSymbolCreateDto)">
             <summary>
-            View first symbol (versioning DEMO). 
+            Create Braille Symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.BrailleSymbolsController.UpdateBrailleSymbol(System.Int32,Braille.Data.Models.Dtos.BrailleSymbolUpdateDto)">
+            <summary>
+            Update Braille Symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.BrailleSymbolsController.DeleteBrailleSymbol(System.Int32)">
+            <summary>
+            Delete Braille Symbol
+            </summary>
+        </member>
+        <member name="M:Braille.Controllers.AsciiCharactersV2Controller.GetAsciiCharacters">
+            <summary>
+            Get list of ascii characters.
             </summary>
             <returns></returns>
         </member>

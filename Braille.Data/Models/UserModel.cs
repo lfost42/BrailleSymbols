@@ -8,20 +8,14 @@ namespace Braille.Data.Models
 {
     public class UserModel : IdentityUser
     {
-        [Display(Name = "First Name"), StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 2)]
-        public string FirstName { get; set; }
+        [Display(Name = "UserName"), StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 2)]
+        public string Username { get; set; }
 
-        [Display(Name = "Last Name"), StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 2)]
-        public string LastName { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 6)]
+        public string Password { get; set; }
 
         [NotMapped]
-        [Display(Name = "Name")]
-        public string FullName => $"{FirstName} {LastName}";
+        public string Token { get; set; }
 
-        public byte[] ImageData { get; set; }
-        [DataType(DataType.Upload)]
-        [NotMapped]
-        public IFormFile ImageIform { get; set; }
-        public string ContentType { get; set; }
     }
 }

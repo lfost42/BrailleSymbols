@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BrailleAPI": {
+    "Braille": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "specialsymbols",

@@ -6,8 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace BrailleAPI
-{
+namespace Braille
+{ 
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
         readonly IApiVersionDescriptionProvider provider;
@@ -24,7 +24,7 @@ namespace BrailleAPI
                     desc.GroupName,
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Title = $"Braille API {desc.ApiVersion}",
+                        Title = $"Braille API {desc.ApiVersion} BrailleSymbols",
                         Version = desc.ApiVersion.ToString(),
                         Description = "A database of Ascii-Braille Special Symbols as published by the ICEB Committee",
                         Contact = new Microsoft.OpenApi.Models.OpenApiContact()

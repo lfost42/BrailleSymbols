@@ -25,8 +25,11 @@ using System.IO;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Braille.Data;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
-namespace BrailleAPI
+namespace Braille
 {
     public class Startup
     {
@@ -44,31 +47,43 @@ namespace BrailleAPI
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
 
-            services.AddScoped<ISpecialSymbolsRepository, SpecialSymbolsRepository>();
+            services.AddScoped<IAsciiCharacterRepository, AsciiCharacterRepository>();
+            services.AddScoped<IBrailleSymbolRepository, BrailleSymbolRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(BrailleMappings));
-
             services.AddApiVersioning(options =>
             {
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ReportApiVersions = true;
-                options.ApiVersionReader = ApiVersionReader.Combine(
-                new HeaderApiVersionReader("X-version"),
-                new QueryStringApiVersionReader("api-version"),
-                new UrlSegmentApiVersionReader(),
-                new MediaTypeApiVersionReader("ver"));
             });
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
-            services.AddSwaggerGen(c => {
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-                c.IgnoreObsoleteActions();
-                c.IgnoreObsoleteProperties();
-                c.CustomSchemaIds(type => type.FullName);
-            });
+            var appSettingsSection = Configuration.GetSection("AppSettings");
 
-            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x => {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
             //    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAdB2C"));
 
             services.AddControllers();
@@ -99,8 +114,12 @@ namespace BrailleAPI
                 app.UseRouting();
             });
 
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
