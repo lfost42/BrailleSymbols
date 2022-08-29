@@ -18,17 +18,17 @@ namespace Braille
     {
         public static async Task Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
 
-            var host = CreateHostBuilder(args).Build();
+            //var host = CreateHostBuilder(args).Build();
 
-            var seedService = host.Services
-                .CreateScope()
-                .ServiceProvider
-                .GetRequiredService<SeedService>();
-            await seedService.ManageDataAsnc();
+            //var seedService = host.Services
+            //    .CreateScope()
+            //    .ServiceProvider
+            //    .GetRequiredService<SeedService>();
+            //await seedService.ManageDataAsnc();
 
-            host.Run();
+            //host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
