@@ -19,7 +19,7 @@
     "Braille": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "specialsymbols",
+      "launchUrl": "",
       "applicationUrl": "https://localhost:45734;http://localhost:11640",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -10,7 +10,6 @@
     <DocumentationFile>C:\Users\lynda\source\repos\BrailleAPI\Braille.API\Braille.API.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'BrailleSymbolsAPI' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Braille' " />
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.15" />
