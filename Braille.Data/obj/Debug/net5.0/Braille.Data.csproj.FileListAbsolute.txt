@@ -1,0 +1,15 @@
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/Braille.Data.deps.json
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/Braille.Data.runtimeconfig.json
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/Braille.Data.runtimeconfig.dev.json
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/Braille.Data.dll
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/ref/Braille.Data.dll
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/bin/Debug/net5.0/Braille.Data.pdb
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.csproj.AssemblyReference.cache
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.AssemblyInfoInputs.cache
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.AssemblyInfo.cs
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.csproj.CoreCompileInputs.cache
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.dll
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/ref/Braille.Data.dll
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.pdb
+/Users/lynda/Desktop/repo/BrailleAPI/Braille.Data/obj/Debug/net5.0/Braille.Data.genruntimeconfig.cache
