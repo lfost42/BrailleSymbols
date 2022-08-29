@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Braille.Data.Models
 {
-    public class UserModel
+    public class UserModel : IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
+
         [Display(Name = "UserName"), StringLength(50, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = 2)]
         public string Username { get; set; }
 
