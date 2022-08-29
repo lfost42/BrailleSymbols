@@ -7,12 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Braille.Data.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<UserModel>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
         public DbSet<AsciiCharacter> AsciiCharacters { get; set; }
         public DbSet<BrailleSymbol> BrailleSymbols { get; set; }
         public DbSet<UserModel> AppUsers { get; set; }

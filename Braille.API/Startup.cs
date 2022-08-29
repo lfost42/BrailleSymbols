@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Braille.Data;
+using Braille.Data.Models;
 
 namespace Braille
 {
@@ -45,6 +48,10 @@ namespace Braille
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
 
+            services.AddIdentityCore<UserModel>(options => options.SignIn.RequireConfirmedAccount = false)
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultUI()
+               .AddDefaultTokenProviders();
             services.AddScoped<SeedService>();
             services.AddScoped<IAsciiCharacterRepository, AsciiCharacterRepository>();
             services.AddScoped<IBrailleSymbolRepository, BrailleSymbolRepository>();
