@@ -14,16 +14,13 @@ namespace Braille.Data
     public class SeedService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly UserManager<UserModel> _userManager;
         private readonly IConfiguration _config;
 
         public SeedService(ApplicationDbContext dbContext,
-            UserManager<UserModel> userManager,
             IConfiguration config)
         {
             _dbContext = dbContext;
             _config = config;
-            _userManager = userManager;
         }
 
         public async Task ManageDataAsnc()

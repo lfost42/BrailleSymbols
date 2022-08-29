@@ -48,10 +48,6 @@ namespace Braille
                 options.UseNpgsql(
                     ConnectionService.GetConnectionString(Configuration)));
 
-            services.AddIdentityCore<UserModel>(options => options.SignIn.RequireConfirmedAccount = false)
-               .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultUI()
-               .AddDefaultTokenProviders();
             services.AddScoped<SeedService>();
             services.AddScoped<IAsciiCharacterRepository, AsciiCharacterRepository>();
             services.AddScoped<IBrailleSymbolRepository, BrailleSymbolRepository>();

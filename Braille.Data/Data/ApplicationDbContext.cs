@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Braille.Data.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Braille.Data.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<UserModel>
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>
+                    options) : base(options)
         {
         }
 
