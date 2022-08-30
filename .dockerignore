@@ -19,7 +19,10 @@
 **/node_modules
 **/npm-debug.log
 **/obj
+**/bin
 **/secrets.dev.yaml
 **/values.dev.yaml
+obj/
+bin/
 LICENSE
 README.md
