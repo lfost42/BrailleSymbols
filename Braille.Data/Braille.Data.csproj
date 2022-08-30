@@ -23,9 +23,11 @@
     <None Remove="Mapper\" />
     <None Remove="Swashbuckle.AspNetCore" />
     <None Remove="Swashbuckle.AspNetCore.SwaggerGen" />
+    <None Remove="Databases\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapper\" />
+    <Folder Include="Databases\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />

@@ -24,11 +24,11 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Braille.Data;
 using Braille.Data.Models;
+using Braille.Data.Databases;
 
 namespace Braille
 {

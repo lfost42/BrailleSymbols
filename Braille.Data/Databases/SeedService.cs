@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Braille.Data
+namespace Braille.Data.Databases
 {
     public class SeedService
     {
@@ -27,6 +27,9 @@ namespace Braille.Data
         {
             await _dbContext.Database.MigrateAsync();
         }
+
+        // lhttps://www.c-sharpcorner.com/article/import-excel-data-to-database-using-Asp-Net-mvc-entity-frame/
+
 
     }
 }
