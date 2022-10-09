@@ -15,8 +15,6 @@ namespace Braille.Data.Models
         [Required, StringLength(50, ErrorMessage = "The {0} must be atleast {2} and at most {1} characters.", MinimumLength = 2)]
         public string Characters { get; set; }
 
-        public virtual ICollection<BrailleSymbol> Symbols { get; set; } = new HashSet<BrailleSymbol>();
-
         public DateTime Added { get; set; }
         public DateTime? Updated { get; set; }
     }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Braille.Data.Databases;
 
 namespace Braille
 {
@@ -18,7 +19,18 @@ namespace Braille
     {
         public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            //CreateHostBuilder(args).Build().Run();
+
+            var host = CreateHostBuilder(args).Build();
+
+            var seedService = host.Services
+                .CreateScope()
+                .ServiceProvider
+                .GetRequiredService<SeedService>();
+
+            await seedService.ManageDataAsnc();
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
