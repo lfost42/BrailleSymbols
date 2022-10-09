@@ -8,9 +8,7 @@
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="Braille.Data" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="BrailleSymbol.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
