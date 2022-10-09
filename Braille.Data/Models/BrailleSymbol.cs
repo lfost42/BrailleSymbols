@@ -21,7 +21,7 @@ namespace Braille.Data.Models
         [ForeignKey("AsciiCharacterId")]
         public AsciiCharacter AsciiCharacter { get; set; }
 
-        public DateTime Added { get; set; }
+        public DateTime? Added { get; set; }
         public DateTime? Updated { get; set; }
 
     }

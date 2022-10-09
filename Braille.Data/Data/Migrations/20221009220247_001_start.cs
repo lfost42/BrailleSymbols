@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Braille.Data.Data.Migrations
 {
-    public partial class _001 : Migration
+    public partial class _001_start : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace Braille.Data.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Characters = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Added = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Characters = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    Added = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Updated = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
@@ -73,7 +73,7 @@ namespace Braille.Data.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     AsciiCharacterId = table.Column<int>(type: "integer", nullable: false),
-                    Added = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Added = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     Updated = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>

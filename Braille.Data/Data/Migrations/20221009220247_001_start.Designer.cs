@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Braille.Data.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220829010755_001")]
-    partial class _001
+    [Migration("20221009220247_001_start")]
+    partial class _001_start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,13 +28,13 @@ namespace Braille.Data.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("Added")
+                    b.Property<DateTime?>("Added")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Characters")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("timestamp without time zone");
@@ -51,7 +51,7 @@ namespace Braille.Data.Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("Added")
+                    b.Property<DateTime?>("Added")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("AsciiCharacterId")
@@ -290,7 +290,7 @@ namespace Braille.Data.Data.Migrations
             modelBuilder.Entity("Braille.Data.Models.BrailleSymbol", b =>
                 {
                     b.HasOne("Braille.Data.Models.AsciiCharacter", "AsciiCharacter")
-                        .WithMany("Symbols")
+                        .WithMany()
                         .HasForeignKey("AsciiCharacterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -347,11 +347,6 @@ namespace Braille.Data.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Braille.Data.Models.AsciiCharacter", b =>
-                {
-                    b.Navigation("Symbols");
                 });
 #pragma warning restore 612, 618
         }
