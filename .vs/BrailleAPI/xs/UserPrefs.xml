@@ -4,12 +4,7 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BrailleAPI" expanded="True">
-            <Node name="Braille.API" expanded="True">
-              <Node name="Controllers" expanded="True" />
-            </Node>
-            <Node name="Braille.Data" expanded="True">
-              <Node name="Models" expanded="True" />
-            </Node>
+            <Node name="Braille.Data" selected="True" />
           </Node>
         </State>
       </Pad>
