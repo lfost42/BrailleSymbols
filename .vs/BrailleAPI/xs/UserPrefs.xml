@@ -4,7 +4,7 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BrailleAPI" expanded="True">
-            <Node name="Braille.Data" selected="True" />
+            <Node name="Braille.API" selected="True" />
           </Node>
         </State>
       </Pad>
