@@ -1,10 +1,16 @@
 ﻿<Properties StartupConfiguration="{2A7E1BB5-3F9A-4BC4-B3F6-5C47F1CAC7B7}|Braille">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Braille.API/Program.cs">
+    <Files>
+      <File FileName="Braille.API/Startup.cs" Line="94" Column="40" />
+      <File FileName="Braille.API/Program.cs" Line="41" Column="54" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BrailleAPI" expanded="True">
-            <Node name="Braille.API" selected="True" />
+            <Node name="Braille.API" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

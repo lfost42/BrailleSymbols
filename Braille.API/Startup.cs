@@ -114,6 +114,7 @@ namespace Braille
             {
                 foreach (var desc in provider.ApiVersionDescriptions)
                 {
+                    options.RoutePrefix = "swagger";
                     options.SwaggerEndpoint($"/swagger/{desc.GroupName}/swagger.json",
                         desc.GroupName.ToUpperInvariant());
                     options.RoutePrefix = "";

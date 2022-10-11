@@ -1,9 +1,15 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal AS base
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+
+ENV ASPNETCORE_URLS http://*:44319
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+EXPOSE 44319
+
 WORKDIR /src
 COPY ["Braille.API/Braille.API.csproj", "Braille.API/"]
 COPY ["Braille.Data/Braille.Data.csproj", "Braille.Data/"]
@@ -18,4 +24,4 @@ RUN dotnet publish "Braille.API.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Braille.Data.dll"]
+CMD ASPNETCORE_URLS="http://*:$PORT" dotnet Braille.API.dll
